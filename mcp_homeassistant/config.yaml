@@ -15,9 +15,11 @@ boot: auto
 startup: services
 homeassistant_api: true
 hassio_role: default
+# ha_url/ha_token are optional (url?/password?) and intentionally have NO default — an
+# empty-string default fails url validation ("Need an url") and blocks start. Absent =
+# use the Supervisor token + http://supervisor/core (see run.py). Add them only to
+# override with a pasted long-lived token.
 options:
-  ha_url: ""
-  ha_token: ""
   mcp_port: 8086
 schema:
   ha_url: "url?"

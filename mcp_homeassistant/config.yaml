@@ -1,0 +1,25 @@
+# Bridged network: agent reaches this by internal DNS `<repo>-mcp_homeassistant:8086`.
+# homeassistant_api: true injects SUPERVISOR_TOKEN + exposes the HA core proxy at
+# http://supervisor/core — so no long-lived token is needed (run.py falls back to a
+# pasted ha_token if the proxy path fails).
+name: MCP Home Assistant
+version: "0.1.0"
+slug: mcp_homeassistant
+description: Home Assistant control MCP (ha-mcp) over HTTP, authed via the Supervisor token
+url: https://github.com/mosa-riel/mcp-homeassistant
+arch:
+  - aarch64
+  - amd64
+init: true
+boot: auto
+startup: services
+homeassistant_api: true
+hassio_role: default
+options:
+  ha_url: ""
+  ha_token: ""
+  mcp_port: 8086
+schema:
+  ha_url: "url?"
+  ha_token: "password?"
+  mcp_port: port
